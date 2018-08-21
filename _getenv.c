@@ -10,8 +10,8 @@ void main(int argc, char *argv[], char * envp[])
 }
 char *_getenv(const char *name)
 {
-	char *envp;
-	int i, j, found = 0, length = 0;
+	extern char **environ;
+	int i, j, length = 0;
 
 	while (name[length] != '\0')
 		length++;
@@ -19,22 +19,15 @@ char *_getenv(const char *name)
 	if (length == 0)
 		return (NULL);
 
-	for (i = 0 ; envp[i] != '\0' ; i++)
+	for (i = 0 ; environ[i] != NULL ; i++)
 	{
-		for (j = 0 ; name[j] != '\0' ; j++)
+		for(j = 0 ; name[j] != '\0' ; j++)
 		{
-			if (envp[i + j] != name[j])
-			{
-				found = 0;
+			if (environ[i][j] != name[j])
 				break;
-			}
-			else
-			{
-				found = 1;
-			}
 		}
-		if (found == 1)
-			return (envp + i);
+		if (name[j] == '\0')
+			return (environ[i] + j + 1);
 	}
-	return (envp + i);
+	return (NULL);
 }
