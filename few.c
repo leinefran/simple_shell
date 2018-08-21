@@ -7,7 +7,7 @@
  * @str: string to free
  * Return: 0 or -1
  */
-int few(pid_t c_pid, char **arr, char *str)
+int few(pid_t c_pid, char **arr)
 {
 	c_pid = fork();
 	int status, i, j;
