@@ -13,7 +13,6 @@ unsigned int get_ppid();
 char *stringdup(const char *str);
 int toksize(char *str);
 char **tokanize(char *str, char **arr);
-int few(pid_t c_pid, char **arr, char *str);
-void free_arr(char **arr);
+int few(pid_t c_pid, char **arr);
 
 #endif /* _SHELL_H_ */
