@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-char *_getenv(const char *name);
-void main(int argc, char *argv[], char * envp[])
-{
-	printf("PATH: %s\n", _getenv("PATH"));
-	printf("HOME: %s\n", _getenv("HOME"));
-	printf("ROOT: %s\n", _getenv("ROOT"));
 
-}
+/**
+ * _getenv - a function that gets an environment variable.
+ * (without using getenv)
+ * @name: the variable to be compared with environ.
+ * Return: char.
+ */
 char *_getenv(const char *name)
 {
 	extern char **environ;
