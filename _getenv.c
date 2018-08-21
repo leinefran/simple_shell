@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "shell.h"
 
 /**
  * _getenv - a function that gets an environment variable.
