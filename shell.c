@@ -20,7 +20,10 @@ int main(void)
 		write(STDIN_FILENO, "$ ", 2);
 		read = getline(&buff, &size, stdin);
 		if (read == -1)
+		{
+			free(buff);
 			return (-1);
+		}
 		printf("read = %li\n", read);
 		if (buff && buff[0] != '\n')
 		{
@@ -38,8 +41,10 @@ int main(void)
 			arr = tokanize(str, arr);
 			printf("arr = %s\n", *arr);
 
-			result = few(c_pid, arr, str);
+			result = few(c_pid, arr);
 		}
+		free(arr);
+		free(str);
 	}
 	return (0);
 }
