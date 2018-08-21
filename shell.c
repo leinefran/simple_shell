@@ -9,7 +9,8 @@ int main(void)
 	ssize_t read = 0;
 	char *buff = NULL, *str = NULL, **arr;
 	size_t size = 0;
-	int tok_size = 0;
+	int tok_size = 0, result = 0;
+	pid_t c_pid;
 
 	pid = get_pid();
 	ppid = get_ppid();
@@ -36,6 +37,8 @@ int main(void)
 
 			arr = tokanize(str, arr);
 			printf("arr = %s\n", *arr);
+
+			result = few(c_pid, arr, str);
 		}
 	}
 	return (0);
