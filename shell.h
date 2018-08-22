@@ -14,5 +14,7 @@ char *stringdup(const char *str);
 int toksize(char *str);
 char **tokanize(char *str, char **arr);
 int few(pid_t c_pid, char **arr);
+int str_comp (char **arr);
+int exit_shell(char **arr, int tok_num);
 
 #endif /* _SHELL_H_ */
