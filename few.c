@@ -4,7 +4,6 @@
  * few - fork, execute, wait function
  * @c_pid: child process
  * @arr: double pointer to array of strings
- * @str: string to free
  * Return: 0 or -1
  */
 int few(pid_t c_pid, char **arr)
