@@ -8,10 +8,10 @@
  */
 int exit_shell(char **arr, int tok_num)
 {
-        int result = 0;
+	int result = 0;
 
-        if (tok_num != 1)
-                return (-1);
-        result = str_comp(arr);
-        return (result);
+	if (tok_num != 1)
+		return (-1);
+	result = str_comp(arr);
+	return (result);
 }
