@@ -2,7 +2,7 @@
 
 /**
  * stringdup - function to return pointer to string (duplicate string)
- * @buff: string to duplicate
+ * @str: string to duplicate
  * Return: pointer to string or NULL if failure to allocate
  */
 char *stringdup(const char *str)

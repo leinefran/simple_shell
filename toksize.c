@@ -5,7 +5,7 @@
  * @str: string to count number of tokens
  * Return: number of tokens
  */
-int toksize (char *str)
+int toksize(char *str)
 {
 	int tok_size = 0;
 
@@ -16,7 +16,7 @@ int toksize (char *str)
 	if (token == NULL)
 	{
 		write(STDIN_FILENO, '\0', 1);
-		return(-1);
+		return (-1);
 	}
 	while (token != NULL)
 	{

@@ -1,6 +1,13 @@
 #include "shell.h"
 
-char **tokanize (char *str, char **arr)
+/**
+ * tokanize - function to get tokans from string
+ * and store in an array
+ * @str: string to tokanize
+ * @arr: array to store tokans
+ * Return: array
+ */
+char **tokanize(char *str, char **arr)
 {
 	char *tokan;
 	int i = 0;
@@ -10,7 +17,6 @@ char **tokanize (char *str, char **arr)
 	while (tokan != NULL)
 	{
 		arr[i] = tokan;
-		printf("arr[i] = arr[%s]\n", arr[i]);
 		tokan = strtok(NULL, " \n");
 		i++;
 	}
