@@ -10,7 +10,6 @@ char **tokanize (char *str, char **arr)
 	while (tokan != NULL)
 	{
 		arr[i] = tokan;
-		printf("arr[i] = arr[%s]\n", arr[i]);
 		tokan = strtok(NULL, " \n");
 		i++;
 	}
