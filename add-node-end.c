@@ -7,13 +7,13 @@
  * @s: the string.
  * Return: the address of the new element, or NULL if it failed.
  */
-p_list *add_node_end(p_list **head, char *s)
+env_list *add_node_end(env_list **head, char *s)
 {
         p_list *new_node, *tmp;
 
         tmp = *head;
 
-        new_node = malloc(sizeof(p_list));
+        new_node = malloc(sizeof(env_list));
         if (new_node == NULL)
                 return (NULL);
 

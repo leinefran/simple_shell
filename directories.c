@@ -7,7 +7,7 @@
  * @name: the variable to be compared with environ.
  * Return: char.
  */
-void print_pathdir(char *name, p_list **head)
+void print_dir(char *name, env_list **head)
 {
         char *str = _getenv(name);
         char *token;
