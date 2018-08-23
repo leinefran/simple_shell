@@ -21,7 +21,7 @@ int main(void)
 		if (read == -1)
 		{
 			free(buff);
-			return (-1);
+			return (0);
 		}
 
 		if (buff && buff[0] != '\n')
