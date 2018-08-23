@@ -9,7 +9,7 @@
  */
 env_list *add_node_end(env_list **head, char *s)
 {
-        p_list *new_node, *tmp;
+        env_list *new_node, *tmp;
 
         tmp = *head;
 
