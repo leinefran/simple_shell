@@ -11,11 +11,16 @@ int str_comp(char **arr)
 
 	int i = 0;
 
+	if (!ptr)
+		return (1);
+
 	while (ex[i] != '\0' && ptr[i] != '\0')
 	{
 		if (ex[i] != ptr[i])
 			return (-1);
+
 		i++;
 	}
+
 	return (0);
 }

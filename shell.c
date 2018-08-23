@@ -9,7 +9,7 @@ int main(void)
 	ssize_t read = 0;
 	char *buff = NULL, *str = NULL, **arr;
 	size_t size = 0;
-	int ex, tok_size = 0;
+	int ex, tok_size = 0, len = 0;
 	pid_t c_pid = 0;
 
 	/*pid = get_pid();*/
@@ -35,15 +35,25 @@ int main(void)
 				return (-1);
 			arr[tok_size] = NULL;
 
+			len = strlen(str);
+			if (str[len - 1] == '\n')
+				str[len - 1] = '\0';
+
 			arr = tokanize(str, arr);
 
 			ex = exit_shell(arr, tok_size);
 
 			if (ex == 0)
 				exit(0);
+			if (ex == 1)
+				continue;
 
 			few(c_pid, arr);
 		}
+
+		if (buff && buff[0] == '\n')
+			continue;
+
 		free(arr);
 		free(str);
 	}

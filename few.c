@@ -8,8 +8,9 @@
  */
 int few(pid_t c_pid, char **arr)
 {
-	c_pid = fork();
 	int status;
+
+	c_pid = fork();
 
 	if (c_pid == -1)
 	{
