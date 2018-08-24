@@ -7,7 +7,7 @@ int main(void)
 {
 	/*unsigned int pid, ppid;*/
 	ssize_t read = 0;
-	char *buff = NULL, *str = NULL, **arr;
+	char *buff = NULL, **arr;
 	size_t size = 0;
 	int ex, tok_size = 0, len = 0;
 	pid_t c_pid = 0;
@@ -16,46 +16,52 @@ int main(void)
 	/*ppid = get_ppid();*/
 	while (1)
 	{
-		write(STDIN_FILENO, "$ ", 2);
+		/* reset size and buffer after every loop */
+		size = 0;
+		buffer = NULL;
+
+		/* write out prompt */
+		write(STDOUT_FILENO, "$ ", 2);
+
+		/* get input from user and store into buffer */
 		read = getline(&buff, &size, stdin);
+		/* if getline fails, it will return -1 to read */
 		if (read == -1)
 		{
 			free(buff);
 			return (0);
 		}
 
+		/* if buffer exists and first index is not a newline */
 		if (buff && buff[0] != '\n')
 		{
-			str = stringdup(buff);
+			len = _strlen(buff);
+			if (buff[len - 1] == '\n')
+				buff[len - 1] = '\0';
+
 			tok_size = toksize(buff);
 			if (tok_size == -1)
 				break;
-			arr = malloc(sizeof(char *) * (tok_size + 1));
-			if (!arr)
-				return (-1);
-			arr[tok_size] = NULL;
 
-			len = strlen(str);
-			if (str[len - 1] == '\n')
-				str[len - 1] = '\0';
-
-			arr = tokanize(str, arr);
+			arr = tokenize(buff);
 
 			ex = exit_shell(arr, tok_size);
-
 			if (ex == 0)
+			{
+				free(arr);
+				free(buff);
 				exit(0);
-			if (ex == 1)
-				continue;
-
+			}
 			few(c_pid, arr);
 		}
 
 		if (buff && buff[0] == '\n')
+		{
+			free(buff);
 			continue;
+		}
 
 		free(arr);
-		free(str);
 	}
 	return (0);
 }
