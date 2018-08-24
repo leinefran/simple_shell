@@ -10,7 +10,7 @@ int exit_shell(char **arr, int size)
 {
 	int result = 0;
 
-	if (tok_num != 1)
+	if (size != 1)
 		return (-1);
 
 	result = str_comp(arr);

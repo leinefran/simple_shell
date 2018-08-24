@@ -18,10 +18,10 @@ int main(void)
 	{
 		/* reset size and buffer after every loop */
 		size = 0;
-		buffer = NULL;
+		buff = NULL;
 
 		/* write out prompt */
-		write(STDOUT_FILENO, "$ ", 2);
+		write(STDIN_FILENO, "$ ", 2);
 
 		/* get input from user and store into buffer */
 		read = getline(&buff, &size, stdin);
@@ -35,7 +35,7 @@ int main(void)
 		/* if buffer exists and first index is not a newline */
 		if (buff && buff[0] != '\n')
 		{
-			len = _strlen(buff);
+			len = strlen(buff);
 			if (buff[len - 1] == '\n')
 				buff[len - 1] = '\0';
 

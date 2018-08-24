@@ -7,21 +7,18 @@
  */
 int toksize(char *str)
 {
-	int tok_size = 0;
+	int tok_size = 0, i = 0;
 
-	char *token = NULL;
-
-	token = strtok(str, " ");
-
-	if (token == NULL)
+	if (!str)
 	{
 		write(STDIN_FILENO, '\0', 1);
 		return (-1);
 	}
-	while (token != NULL)
+	while (str[i] != '\0')
 	{
-		tok_size++;
-		token = strtok(NULL, " ");
+		if (str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
+			tok_size++;
+		i++;
 	}
 	return (tok_size);
 }
