@@ -14,13 +14,13 @@ int str_comp(char **arr)
 	if (!ptr)
 		return (1);
 
-	while (ex[i] != '\0' && ptr[i] != '\0')
+	while (ex[i] == ptr[i])
 	{
-		if (ex[i] != ptr[i])
-			return (-1);
+		if (ex[i] == '\0' && ptr[i] == '\0')
+			return (0);
 
 		i++;
 	}
 
-	return (0);
+	return (-1);
 }
