@@ -9,17 +9,18 @@
  * Return: return concatenated string; otherwise: NULL.
  */
 
-env_list *path(char **arr)
+char *path(char **arr)
 {
 	char *path_original = _getenv("PATH");
 	char *path_copy = strdup(path_original);
 	char *token, *ptr = arr[0], *cats;
 
-	token = strtok(path, ":");
+	token = strtok(path_copy, ":");
 
 	while (token != NULL)
 	{
 		cats = str_concat(token, ptr);
+		printf("cats: %s\n", cats);
 		if (_which(cats) == 0)
 		{
 			if (access(cats, X_OK) == 0)
