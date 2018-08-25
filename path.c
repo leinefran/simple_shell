@@ -5,32 +5,37 @@
  * How? Takes the command that was typed in the shell, checks
  * in which directory inside PATH the command is located and
  * executes the command.
- * @command: the command.
+ * @arr: an array of string pointers.
  * Return: return concatenated string; otherwise: NULL.
  */
 
-env_list *path(char *command)
+env_list *path(char **arr)
 {
-	char *path = _getenv("PATH");
-	char *token;
-	env_list **head;
+	char *path_original = _getenv("PATH");
+	char *path_copy = strdup(path_original);
+	char *token, *ptr = arr[0], *cats;
 
 	token = strtok(path, ":");
 
-        while (token != NULL)
-        {
-		token = str_concat(token, command);
-		add_node_end(head, token);
-		if (_which(*head) == 0)
+	while (token != NULL)
+	{
+		cats = str_concat(token, ptr);
+		if (_which(cats) == 0)
 		{
-			if (access(*head, X_OK) == 0)
-				return (*head);
+			if (access(cats, X_OK) == 0)
+			{	free(path_copy);
+				return (cats);
+			}
 			else
 			{
+				free(cats);
+				free(path_copy);
 				return (NULL);
 			}
 		}
 		token = strtok(NULL, ":");
+		free(cats);
 	}
+	free(path_copy);
 	return (NULL);
 }
