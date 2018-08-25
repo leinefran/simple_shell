@@ -7,9 +7,9 @@ int main(void)
 {
 	/*unsigned int pid, ppid;*/
 	ssize_t read = 0;
-	char *buff = NULL, **arr;
+	char *buff = NULL, **arr, *cats;
 	size_t size = 0;
-	int ex, tok_size = 0, len = 0;
+	int result, tok_size = 0, len = 0;
 	pid_t c_pid = 0;
 
 	/*pid = get_pid();*/
@@ -43,15 +43,22 @@ int main(void)
 			if (tok_size == -1)
 				break;
 
+			if (tok_size == 0)
+				continue;
+
 			arr = tokenize(buff);
 
-			ex = exit_shell(arr, tok_size);
-			if (ex == 0)
+			result = str_comp(arr, tok_size);
+			if (result == 0)
 			{
 				free(arr);
 				free(buff);
 				exit(0);
 			}
+			cats = path(arr);
+			if (cats)
+				arr[0] = cats;
+
 			few(c_pid, arr);
 		}
 
