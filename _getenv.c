@@ -10,7 +10,6 @@
  */
 char *_getenv(const char *name)
 {
-	extern char **environ;
 	int i, j, length = 0;
 
 	while (name[length] != '\0')
@@ -21,7 +20,7 @@ char *_getenv(const char *name)
 
 	for (i = 0 ; environ[i] != NULL ; i++)
 	{
-		for(j = 0 ; name[j] != '\0' ; j++)
+		for (j = 0 ; name[j] != '\0' ; j++)
 		{
 			if (environ[i][j] != name[j])
 				break;
