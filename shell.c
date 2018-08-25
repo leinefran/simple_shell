@@ -7,7 +7,7 @@ int main(void)
 {
 	/*unsigned int pid, ppid;*/
 	ssize_t read = 0;
-	char *buff = NULL, **arr, *cats = NULL;
+	char *buff = NULL, **arr, *cats;
 	size_t size = 0;
 	int result, tok_size = 0, len = 0;
 	pid_t c_pid = 0;
