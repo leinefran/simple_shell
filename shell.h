@@ -2,7 +2,6 @@
 #define _SHELL_H_
 
 #include <stdio.h>
-#include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,13 +32,11 @@ char *stringdup(const char *str);
 int toksize(char *str);
 char **tokenize(char *str);
 int few(pid_t c_pid, char **arr);
-int str_comp (char **arr);
-int exit_shell(char **arr, int size);
+int str_comp (char **arr, int size);
 char *_getenv(const char *name);
 int _which(char *file);
-env_list *path(char *command, env_list **head);
 char *str_concat(char *s1, char *s2);
-
+char path(char **arr);
 
 
 #endif /* _SHELL_H_ */
