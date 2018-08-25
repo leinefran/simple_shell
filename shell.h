@@ -24,7 +24,7 @@ typedef struct environ_list
 } env_list;
 
 extern char **environ;
-int print_env();
+int print_env(void);
 int _strlen(char *s);
 unsigned int get_pid();
 unsigned int get_ppid();
@@ -36,7 +36,7 @@ int str_comp (char **arr, int size);
 char *_getenv(const char *name);
 int _which(char *file);
 char *str_concat(char *s1, char *s2);
-char path(char **arr);
+char *path(char **arr);
 
 
 #endif /* _SHELL_H_ */
