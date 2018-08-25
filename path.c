@@ -20,7 +20,6 @@ char *path(char **arr)
 	while (token != NULL)
 	{
 		cats = str_concat(token, ptr);
-		printf("cats: %s\n", cats);
 		if (_which(cats) == 0)
 		{
 			if (access(cats, X_OK) == 0)
