@@ -13,37 +13,36 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	int s1_len;
-	int s2_len;
+	int len1 = 0, len2 = 0, i, j;
 
-	int i, j, n;
-	char *ls;
-
-	for (s1_len = 0 ; s1[s1_len] != '\0' ; s1_len++)
-		;
-	for (s2_len = 0 ; s2[s2_len] != '\0' ; s2_len++)
-		;
-
-	n = s1_len + s2_len + 2;
+	char *ptr;
 
 	if (s1 == NULL)
-		s1[0] = '\0';
+	{
+		s1 = malloc(sizeof(char));
+		if (s1 == NULL)
+			return (NULL);
+		*s1 = '\0';
+	}
 	if (s2 == NULL)
-		s2[0] = '\0';
-
-
-	ls = malloc(sizeof(char) * n);
-
-	if (ls == NULL)
+	{
+		s2 = malloc(sizeof(char));
+		if (s2 == NULL)
+			return (NULL);
+		*s2 = '\0';
+	}
+	while (s1[len1] != '\0')
+		len1++;
+	while (s2[len2] != '\0')
+		len2++;
+	ptr = malloc(sizeof(char) * (len1 + len2 + 2));
+	if (ptr == NULL)
 		return (NULL);
-
 	for (i = 0 ; s1[i] != '\0' ; i++)
-		ls[i] = s1[i];
-	ls[i] = '/';
+		ptr[i] = s1[i];
+	ptr[i] = '/';
 	i++;
-	for (j = 0 ; s2[j] != '\0' ; j++)
-		ls[i + j] = s2[j];
-
-
-	return (ls);
+	for (j = 0 ; j < (len2 + 1) ; j++, i++)
+		ptr[i] = s2[j];
+	return (ptr);
 }
