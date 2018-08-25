@@ -24,6 +24,7 @@ typedef struct environ_list
         struct environ_list *next;
 } env_list;
 
+extern char **environ;
 int _strlen(char *s);
 unsigned int get_pid();
 unsigned int get_ppid();
