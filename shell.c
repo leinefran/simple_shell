@@ -7,7 +7,7 @@ int main(void)
 {
 	/*unsigned int pid, ppid;*/
 	ssize_t read = 0;
-	char *buff = NULL, **arr;
+	char *buff = NULL, **arr, *cats = NULL;
 	size_t size = 0;
 	int ex, tok_size = 0, len = 0;
 	pid_t c_pid = 0;
@@ -52,6 +52,10 @@ int main(void)
 				free(buff);
 				exit(0);
 			}
+			cats = path(arr[0]);
+			if (cats)
+				arr[0] = cats;
+
 			few(c_pid, arr);
 		}
 
