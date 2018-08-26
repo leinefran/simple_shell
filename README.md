@@ -93,4 +93,4 @@ $ gcc -Wall -Werror -Wextra -pedantic *.c
 
 [Leine Valente](https://github.com/leinefran)
 
-[Nicole Swansom](https://github.com/thenicopixie)
+[Nicole Swanson](https://github.com/thenicopixie)
