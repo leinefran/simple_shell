@@ -17,11 +17,11 @@ char **tokenize(char *str)
 	arr = malloc(sizeof(char *) * (words + 1));
 	if (!arr)
 		return (NULL);
-	token = strtok(str, " ");
+	token = strtok(str, " \t");
 	while (token != NULL)
 	{
 		arr[i] = token;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \t");
 		i++;
 	}
 	arr[i] = NULL;
