@@ -25,6 +25,7 @@ typedef struct environ_list
 
 extern char **environ;
 int print_env(void);
+void error(char *str);
 int _strlen(char *s);
 unsigned int get_pid();
 unsigned int get_ppid();

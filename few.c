@@ -21,7 +21,7 @@ int few(pid_t c_pid, char **arr)
 	{
 		if (execve(arr[0], arr, NULL) == -1)
 		{
-			perror("error ");
+			error(arr[0]);
 			exit(99);
 		}
 	}
