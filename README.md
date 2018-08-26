@@ -16,9 +16,9 @@ This project recreates a simple command line shell that executes commands read f
 * No piping or redirection.
 * Built-in commands:
 
-  env	    Print a list of the current environment variables.
+  - env		    Print a list of the current environment variables.
 
-  exit	    Exits the shell.
+  - exit	    Exits the shell.
 
 ##### Example 1 | cat command
 
@@ -88,6 +88,9 @@ Files are compiled this way:
 $ gcc -Wall -Werror -Wextra -pedantic *.c
 
 ### Authors
+
 [Francesca Cantor](https://github.com/fcantor)
+
 [Leine Valente](https://github.com/leinefran)
+
 [Nicole Swansom](https://github.com/thenicopixie)
