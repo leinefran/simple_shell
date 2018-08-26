@@ -64,7 +64,7 @@ vagrant@simple_shell$
 ---
 File|Task
 ---|---
-man | manual page
+man_1_simple_shell | manual page
 _getenv.c | gets an environment variable
 _strlen.c | returns the length of a string
 _which.c | checks wether a file exists in the PATH
