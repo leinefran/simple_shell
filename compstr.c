@@ -9,6 +9,7 @@
 int str_comp(char **arr, int size)
 {
 	char *ex = "exit", *env = "env", *ptr = arr[0];
+	char *dot = ".";
 
 	int i = 0;
 
@@ -18,10 +19,12 @@ int str_comp(char **arr, int size)
 	if (!ptr)
 		return (1);
 
-	while (ex[i] == ptr[i] || env[i] == ptr[i])
+	while (ex[i] == ptr[i] || env[i] == ptr[i] || dot[i] == ptr[i])
 	{
 		if (ex[i] == '\0' && ptr[i] == '\0')
 			return (0);
+		else if (dot[i] == '\0' && ptr[i] == '\0')
+			return (2);
 		else if (env[i] == '\0' && ptr[i] == '\0')
 		{
 			print_env();

@@ -9,7 +9,7 @@ int main(void)
 	ssize_t read = 0;
 	char *buff = NULL, **arr, *cats;
 	size_t size = 0;
-	int result, tok_size = 0, len = 0;
+	int result, tok_size = 0, len = 0, line_counter = 0;
 	pid_t c_pid = 0;
 
 	/*pid = get_pid();*/
@@ -25,6 +25,7 @@ int main(void)
 
 		/* get input from user and store into buffer */
 		read = getline(&buff, &size, stdin);
+		line_counter++;
 		/* if getline fails, it will return -1 to read */
 		if (read == -1)
 		{
@@ -35,19 +36,22 @@ int main(void)
 		/* if buffer exists and first index is not a newline */
 		if (buff && buff[0] != '\n')
 		{
+			/* count length of buffer input */
 			len = strlen(buff);
 			if (buff[len - 1] == '\n')
 				buff[len - 1] = '\0';
 
+			/* count number of tokens in buffer */
 			tok_size = toksize(buff);
 			if (tok_size == -1)
 				break;
-
 			if (tok_size == 0)
 				continue;
 
+			/* put tokens inside array */
 			arr = tokenize(buff);
 
+			/* checks if 'env' or 'exit' command is entered */
 			result = str_comp(arr, tok_size);
 			if (result == 0)
 			{
@@ -55,11 +59,34 @@ int main(void)
 				free(buff);
 				exit(0);
 			}
-			cats = path(arr);
-			if (cats)
+			else if (result == 2)
+			{
+				free(arr);
+				free(buff);
+				continue;
+			}
+			/* sending the input to the path function */
+			/* works for single commands like 'ls' */
+			cats = path(arr, line_counter);
+			if (cats) /* execute only if single command exists */
+			{
 				arr[0] = cats;
+				few(c_pid, arr, line_counter);
+			}
+			if (!cats)
+			{
+				if (arr[0][0] == '.' || arr[0][0] == '/')
+				{
+					/* or if executable & w/ permissions */
+					if (access(arr[0], X_OK) == 0)
+						few(c_pid, arr, line_counter);
+					else
+						 error(arr[0], line_counter, 0);
+				}
+				else
+					error(arr[0], line_counter, 0);
+			}
 
-			few(c_pid, arr);
 		}
 
 		if (buff && buff[0] == '\n')

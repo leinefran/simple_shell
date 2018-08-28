@@ -25,19 +25,20 @@ typedef struct environ_list
 
 extern char **environ;
 int print_env(void);
-void error(char *str);
+void error(char *str, int line_counter, int flag);
 int _strlen(char *s);
+char *_itoa(int n);
 unsigned int get_pid();
 unsigned int get_ppid();
 char *stringdup(const char *str);
 int toksize(char *str);
 char **tokenize(char *str);
-int few(pid_t c_pid, char **arr);
+int few(pid_t c_pid, char **arr, int line_counter);
 int str_comp (char **arr, int size);
 char *_getenv(const char *name);
 int _which(char *file);
-char *str_concat(char *s1, char *s2);
-char *path(char **arr);
+char *str_concat(char *s1, char *s2, int flag);
+char *path(char **arr, int line_counter);
 
 
 #endif /* _SHELL_H_ */
