@@ -7,11 +7,12 @@
  *
  * @s1: string to be modified.
  * @s2: string to be appended.
+ * @flag: integer flag for handling path or error function
  * ls: linked_string (after concatenate).
  *
  * Return: char.
  */
-char *str_concat(char *s1, char *s2)
+char *str_concat(char *s1, char *s2, int flag)
 {
 	int len1 = 0, len2 = 0, i, j;
 
@@ -35,13 +36,16 @@ char *str_concat(char *s1, char *s2)
 		len1++;
 	while (s2[len2] != '\0')
 		len2++;
-	ptr = malloc(sizeof(char) * (len1 + len2 + 2));
+	ptr = malloc(sizeof(char) * (len1 + len2 + 1 + flag));
 	if (ptr == NULL)
 		return (NULL);
 	for (i = 0 ; s1[i] != '\0' ; i++)
 		ptr[i] = s1[i];
-	ptr[i] = '/';
-	i++;
+	if (flag == 1)
+	{
+		ptr[i] = '/';
+		i++;
+	}
 	for (j = 0 ; j < (len2 + 1) ; j++, i++)
 		ptr[i] = s2[j];
 	return (ptr);
