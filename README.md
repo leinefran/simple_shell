@@ -97,22 +97,16 @@ vagrant@simple_shell$
 ---
 File|Task
 ---|---
-man_1_simple_shell | manual page
-_getenv.c | gets an environment variable
-_strlen.c | returns the length of a string
-_which.c | checks wether a file exists in the PATH
-compstr.c | compares two strings
+AUTHORS | the authors page
+README.md | read me file
 environ.c | prints the environment
-few.c | creates and executes a process
+error.c | handles errors
+man_1_simple_shell | manual page
 path.c | handles the PATH
-pid.c | get process ID of the calling process
-ppid.c | return the process ID of the parent process
 shell.c | the main componenets of the shell
 shell.h | the header file for the simple shell program
-str_concat.c | concatenates two strings
-strdup.c | duplicates a string
-tokenize.c | splits a string into tokens
-toksize.c | count the number of tokens
+string.c | a series of functions to handle strings
+tokenize.c | splits a string into tokens and count the number of tokens
 
 #### Compilation
 
