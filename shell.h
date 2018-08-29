@@ -20,8 +20,8 @@
  */
 typedef struct environ_list
 {
-        char *str;
-        struct environ_list *next;
+	char *str;
+	struct environ_list *next;
 } env_list;
 
 extern char **environ;
@@ -30,13 +30,13 @@ void error(char *str, int line_counter, int flag);
 int _strlen(char *s);
 void rev_string(char *s);
 char *_itoa(int n);
-unsigned int get_pid();
-unsigned int get_ppid();
+unsigned int get_pid(void);
+unsigned int get_ppid(void);
 char *stringdup(const char *str);
 int toksize(char *str);
 char **tokenize(char *str);
 int few(pid_t c_pid, char **arr, int line_counter);
-int str_comp (char **arr, int size);
+int str_comp(char **arr, int size);
 char *_getenv(const char *name);
 int _which(char *file);
 char *str_concat(char *s1, char *s2, int flag);
