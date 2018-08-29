@@ -29,9 +29,18 @@ int main(void)
 		line_counter++;
 		if (read == -1)
 		{
+			if (isatty(0))
+				write(STDIN_FILENO, "\n", 1);
 			free(buff);
-			write(STDIN_FILENO, "\n", 1);
 			return (0);
+		}
+		if (read == 0)
+		{
+			if (isatty(0))
+			{
+				write(STDIN_FILENO, "\n", 1);
+				continue;
+			}
 		}
 		if (buff && buff[0] != '\n')
 		{
