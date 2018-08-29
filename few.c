@@ -22,7 +22,7 @@ int few(pid_t c_pid, char **arr, int line_counter)
 	{
 		if (execve(arr[0], arr, NULL) == -1)
 		{
-			error(arr[0], line_counter, 0);
+			error(arr[0], line_counter, 1);
 			exit(99);
 		}
 	}
