@@ -34,7 +34,7 @@ int main(void)
 		if (buff && buff[0] != '\n')
 		{
 			/* count length of buffer input */
-			len = _strlen(buff);
+			len = strlen(buff);
 			if (buff[len - 1] == '\n')
 				buff[len - 1] = '\0';
 

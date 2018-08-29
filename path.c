@@ -36,15 +36,16 @@ int path(char **arr, int line_counter)
 				if (access(cats, X_OK) == 0)
 				{
 					arr[0] = cats;
+					few(c_pid, arr, line_counter);
 					free(cats);
 					free(path_copy);
-					few(c_pid, arr, line_counter);
 					return (0);
 				}
 				else
 				{
 					/* files exist, but access is denied */
 					error(arr[0], line_counter, 1);
+					break;
 				}
 			}
 
