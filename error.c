@@ -83,7 +83,7 @@ void error(char *str, int line, int flag)
 	write(1, str, _strlen(str));
 
 	if (flag == 0)
-		write(1, ": file not found\n", 18);
+		write(1, ": not found\n", 18);
 	else if (flag == 1)
 		perror(" ");
 
