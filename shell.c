@@ -66,7 +66,7 @@ int main(void)
 			{
 				free(arr);
 				free(buff);
-				exit(0);
+				exit(EXIT_SUCCESS);
 			}
 			else if (result == 2)
 			{
