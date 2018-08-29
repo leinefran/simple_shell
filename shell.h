@@ -9,7 +9,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-
+#include <signal.h>
 /**
  * struct environ_list - singly linked list
  * @str: string - (malloc'ed string)
@@ -24,6 +24,7 @@ typedef struct environ_list
 	struct environ_list *next;
 } env_list;
 
+void sighand(int signum);
 extern char **environ;
 int print_env(void);
 void error(char *str, int line_counter, int flag);
