@@ -1,0 +1,43 @@
+.TH SIMPLE SHELL
+.SH NAME
+simple_shell
+
+.SH SYNOPSIS
+The simple shell is a simplified version of  the original shell, written by Ken Thompson
+
+.SH DESCRIPTION
+Runs commands in both interactive and non-interactive modes. Handles PATH to commands.
+
+.SH RETURN VALUE
+Returns exit codes and error codes (if any)
+
+.SH SYNTAX
+.B $ <command> <flags or options> <argument 1> <argument 2> ...
+.SS
+EXAMPLE 1:
+$ /bin/ls
+.SS
+EXAMPLE 2:
+$ ls -l
+.SS
+EXAMPLE 3:
+$ touch textfile
+
+.SH BUILTIN COMMANDS
+
+.SS env
+- list the current environment variables
+
+.SS exit
+- exit the shell
+
+.SH NOTES
+The program doesn't account for flags, fields, precision, or length modifiers.
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHORS
+Francesca Cantor (https://github.com/fcantor)
+Leine Valente (https://github.com/leinefran)
+Nicole Swanson (https://github.com/thenicopixie)
