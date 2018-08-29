@@ -14,6 +14,7 @@ This project recreates a simple command line shell that executes commands read f
 * Arguments must be separated by whitespace.
 * No quoting arguments and escaping whitespace.
 * No piping or redirection.
+* It doesn't handle aliases, comments or  history.
 * Built-in commands:
 
   - env (print a list of the current environment variables).
