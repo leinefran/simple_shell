@@ -1,4 +1,4 @@
-.TH SIMPLE SHELL
+.TH SIMPLE_SHELL 1
 .SH NAME
 simple_shell
 
@@ -38,6 +38,9 @@ The program doesn't account for flags, fields, precision, or length modifiers.
 No known bugs.
 
 .SH AUTHORS
+.PP
 Francesca Cantor (https://github.com/fcantor)
+.PP
 Leine Valente (https://github.com/leinefran)
+.PP
 Nicole Swanson (https://github.com/thenicopixie)
