@@ -1,4 +1,10 @@
 #include "shell.h"
+
+void sighand(int signum)
+{
+	write(1, "\n$ ", 3);
+	return;
+}
 /**
  * main - simple shell program
  * Return: 0 always success
@@ -13,27 +19,20 @@ int main(void)
 
 	while (1)
 	{
-		/* reset size and buffer after every loop */
 		size = 0;
 		buff = NULL;
 
 		if (isatty(0))
-		{
-		/* write out prompt */
 			write(STDIN_FILENO, "$ ", 2);
-		}
-		/* get input from user and store into buffer */
+		signal(SIGINT, sighand);
 		read = getline(&buff, &size, stdin);
 		line_counter++;
-		/* if getline fails, it will return -1 to read */
 		if (read == -1)
 		{
 			free(buff);
 			write(STDIN_FILENO, "\n", 1);
 			return (0);
 		}
-
-		/* if buffer exists and first index is not a newline */
 		if (buff && buff[0] != '\n')
 		{
 			/* count length of buffer input */
@@ -47,11 +46,9 @@ int main(void)
 				break;
 			if (tok_size == 0)
 				continue;
-
 			/* put tokens inside array */
 			arr = tokenize(buff);
-
-			/* checks if 'env' or 'exit' command is entered */
+			/* checks if 'env', 'exit', or '.' is entered */
 			result = str_comp(arr, tok_size);
 			if (result == 0)
 			{
@@ -65,11 +62,10 @@ int main(void)
 				free(buff);
 				continue;
 			}
-			/* sending the input to the path function */
-			/* works for single commands like 'ls' */
+			/* send input to path function to check */
+			/*if it exists, permissions, and if it can execute */
 			path(arr, line_counter);
 		}
-
 		if (buff && buff[0] == '\n')
 		{
 			free(buff);

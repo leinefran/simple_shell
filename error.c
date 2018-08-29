@@ -76,14 +76,14 @@ void error(char *str, int line, int flag)
 	char *shell = _getenv("_");
 
 	line_counter = _itoa(line);
-	write(STDIN_FILENO, shell, _strlen(shell));
-	write(STDIN_FILENO, ": ", 2);
-	write(STDIN_FILENO, line_counter, _strlen(line_counter));
-	write(STDIN_FILENO, ": ", 2);
-	write(STDIN_FILENO, str, _strlen(str));
+	write(STDOUT_FILENO, shell, _strlen(shell));
+	write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, line_counter, _strlen(line_counter));
+	write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, str, _strlen(str));
 
 	if (flag == 0)
-		write(STDIN_FILENO, ": not found\n", 13);
+		write(STDERR_FILENO, ": not found\n", 13);
 	else if (flag == 1)
 		perror(" ");
 
