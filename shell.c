@@ -29,7 +29,7 @@ int main(void)
 		if (read == -1)
 		{
 			free(buff);
-			write(1, "\n", 1);
+			write(STDIN_FILENO, "\n", 1);
 			return (0);
 		}
 
