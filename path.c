@@ -44,10 +44,9 @@ int few(pid_t c_pid, char **arr, int line_counter)
 int path(char **arr, int line_counter)
 {
 	char *path_original = _getenv("PATH");
-	char *path_copy = strdup(path_original);
+	char *path_copy = stringdup(path_original);
 	char *token, *ptr = arr[0], *cats;
 	pid_t c_pid = 0;
-
 	if (_which(arr[0]) == 0)
 	{
 		if (access(arr[0], X_OK) == 0)
