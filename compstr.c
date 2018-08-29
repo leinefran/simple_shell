@@ -23,13 +23,13 @@ int str_comp(char **arr, int size)
 	{
 		if (ex[i] == '\0' && ptr[i] == '\0')
 			return (0);
-		else if (dot[i] == '\0' && ptr[i] == '\0')
-			return (2);
 		else if (env[i] == '\0' && ptr[i] == '\0')
 		{
 			print_env();
 			return (1);
 		}
+		else if (dot[i] == '\0' && ptr[i] == '\0')
+			return (2);
 
 		i++;
 	}
