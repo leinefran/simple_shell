@@ -51,9 +51,15 @@ int path(char **arr, int line_counter)
 	if (_which(arr[0]) == 0)
 	{
 		if (access(arr[0], X_OK) == 0)
+		{
 			few(c_pid, arr, line_counter);
+			free(path_copy);
+		}
 		else
+		{
 			error(arr[0], line_counter, 1);
+			free(path_copy);
+		}
 	}
 	else
 	{
