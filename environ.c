@@ -12,9 +12,9 @@ int print_env(void)
 	while (environ[i])
 	{
 		/* prints in form of "variable=value" */
-		write(1, environ[i], _strlen(environ[i]));
+		write(STDIN_FILENO, environ[i], _strlen(environ[i]));
 		i++;
-		write(1, "\n", 1);
+		write(STDIN_FILENO, "\n", 1);
 	}
 	return (0);
 }
