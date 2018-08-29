@@ -10,3 +10,15 @@ unsigned int get_pid(void)
 	pid = getpid();
 	return (pid);
 }
+/**
+ * get_ppid - function to return the process ID of the
+ * parent process of the calling process
+ * Return: ppid
+ */
+unsigned int get_ppid(void)
+{
+	unsigned int ppid;
+
+	ppid = getppid();
+	return (ppid);
+}
