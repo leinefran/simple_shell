@@ -17,9 +17,11 @@ int main(void)
 		size = 0;
 		buff = NULL;
 
+		if (isatty(0))
+		{
 		/* write out prompt */
-		write(STDIN_FILENO, "$ ", 2);
-
+			write(STDIN_FILENO, "$ ", 2);
+		}
 		/* get input from user and store into buffer */
 		read = getline(&buff, &size, stdin);
 		line_counter++;
@@ -65,8 +67,6 @@ int main(void)
 			/* sending the input to the path function */
 			/* works for single commands like 'ls' */
 			path(arr, line_counter);
-			free(buff);
-
 		}
 
 		if (buff && buff[0] == '\n')
@@ -74,6 +74,7 @@ int main(void)
 			free(buff);
 			continue;
 		}
+		free(buff);
 		free(arr);
 	}
 	return (0);
