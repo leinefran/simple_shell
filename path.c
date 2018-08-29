@@ -47,6 +47,7 @@ int path(char **arr, int line_counter)
 	char *path_copy = stringdup(path_original);
 	char *token, *ptr = arr[0], *cats;
 	pid_t c_pid = 0;
+
 	if (_which(arr[0]) == 0)
 	{
 		if (access(arr[0], X_OK) == 0)
