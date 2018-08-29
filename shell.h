@@ -1,5 +1,6 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <unistd.h>
@@ -27,6 +28,7 @@ extern char **environ;
 int print_env(void);
 void error(char *str, int line_counter, int flag);
 int _strlen(char *s);
+void rev_string(char *s);
 char *_itoa(int n);
 unsigned int get_pid();
 unsigned int get_ppid();
@@ -38,7 +40,7 @@ int str_comp (char **arr, int size);
 char *_getenv(const char *name);
 int _which(char *file);
 char *str_concat(char *s1, char *s2, int flag);
-char *path(char **arr, int line_counter);
+int path(char **arr, int line_counter);
 
 
 #endif /* _SHELL_H_ */

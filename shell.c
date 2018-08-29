@@ -7,13 +7,10 @@ int main(void)
 {
 	/*unsigned int pid, ppid;*/
 	ssize_t read = 0;
-	char *buff = NULL, **arr, *cats;
+	char *buff = NULL, **arr;
 	size_t size = 0;
 	int result, tok_size = 0, len = 0, line_counter = 0;
-	pid_t c_pid = 0;
 
-	/*pid = get_pid();*/
-	/*ppid = get_ppid();*/
 	while (1)
 	{
 		/* reset size and buffer after every loop */
@@ -67,25 +64,8 @@ int main(void)
 			}
 			/* sending the input to the path function */
 			/* works for single commands like 'ls' */
-			cats = path(arr, line_counter);
-			if (cats) /* execute only if single command exists */
-			{
-				arr[0] = cats;
-				few(c_pid, arr, line_counter);
-			}
-			if (!cats)
-			{
-				if (arr[0][0] == '.' || arr[0][0] == '/')
-				{
-					/* or if executable & w/ permissions */
-					if (access(arr[0], X_OK) == 0)
-						few(c_pid, arr, line_counter);
-					else
-						 error(arr[0], line_counter, 0);
-				}
-				else
-					error(arr[0], line_counter, 0);
-			}
+			path(arr, line_counter);
+			free(buff);
 
 		}
 
@@ -94,7 +74,6 @@ int main(void)
 			free(buff);
 			continue;
 		}
-
 		free(arr);
 	}
 	return (0);
