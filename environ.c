@@ -5,7 +5,7 @@
  * Return: 0.
  */
 
-int print_env(void)
+void print_env(void)
 {
 	int i = 0;
 
@@ -16,7 +16,6 @@ int print_env(void)
 		i++;
 		write(STDIN_FILENO, "\n", 1);
 	}
-	return (0);
 }
 /**
  * _getenv - a function that gets an environment variable.
