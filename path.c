@@ -66,6 +66,7 @@ int path(char **arr, int line_counter)
 			error(arr[0], line_counter, 1);
 			free(path_copy);
 		}
+		return(ex_status);
 	}
 	else
 	{
