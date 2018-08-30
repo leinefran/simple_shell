@@ -21,13 +21,18 @@ int few(pid_t c_pid, char **arr, int line_counter)
 	{
 		if (execve(arr[0], arr, NULL) == -1)
 		{
-			error(arr[0], line_counter, 1);
-			exit(99);
+			error(arr[0], line_counter, 0);
+			return (2);
 		}
 	}
 	else
 	{
 		wait(&status);
+		if (WIFEXITED(status))
+		{
+			const int ex_status = WEXITSTATUS(status);
+			return (ex_status);
+		}
 	}
 	return (0);
 }
@@ -47,12 +52,13 @@ int path(char **arr, int line_counter)
 	char *path_copy = stringdup(path_original);
 	char *token, *ptr = arr[0], *cats;
 	pid_t c_pid = 0;
+	int ex_status = 0;
 
 	if (_which(arr[0]) == 0)
 	{
 		if (access(arr[0], X_OK) == 0)
 		{
-			few(c_pid, arr, line_counter);
+			ex_status = few(c_pid, arr, line_counter);
 			free(path_copy);
 		}
 		else
@@ -73,16 +79,16 @@ int path(char **arr, int line_counter)
 				if (access(cats, X_OK) == 0)
 				{
 					arr[0] = cats;
-					few(c_pid, arr, line_counter);
+					ex_status = few(c_pid, arr, line_counter);
 					free(cats);
 					free(path_copy);
-					return (0);
+					return (ex_status);
 				}
 				else
 				{
 					/* files exist, but access is denied */
 					error(arr[0], line_counter, 1);
-					break;
+					return (2);
 				}
 			}
 
@@ -92,5 +98,5 @@ int path(char **arr, int line_counter)
 		free(path_copy);
 		error(arr[0], line_counter, 0);
 	}
-	return (-1);
+	return (127);
 }
