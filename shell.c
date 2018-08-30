@@ -19,6 +19,7 @@ int main(void)
 	char *buff = NULL, **arr;
 	size_t size = 0;
 	int result, tok_size = 0, len = 0, line_counter = 0;
+	int ex_flag = 0;
 
 	while (1)
 	{
@@ -66,9 +67,10 @@ int main(void)
 			{
 				free(arr);
 				free(buff);
-				exit(EXIT_SUCCESS);
+				exit(ex_flag);
 			}
-			else if (result == 2)
+			ex_flag = 0;
+			if (result == 2)
 			{
 				free(arr);
 				free(buff);
@@ -82,7 +84,7 @@ int main(void)
 			}
 			/* send input to path function to check */
 			/*if it exists, permissions, and if it can execute */
-			path(arr, line_counter);
+			ex_flag = path(arr, line_counter);
 		}
 		if (buff && buff[0] == '\n')
 		{
