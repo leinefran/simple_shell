@@ -74,6 +74,12 @@ int main(void)
 				free(buff);
 				continue;
 			}
+			else if (result == 1)
+			{
+				free(arr);
+				free(buff);
+				continue;
+			}
 			/* send input to path function to check */
 			/*if it exists, permissions, and if it can execute */
 			path(arr, line_counter);
