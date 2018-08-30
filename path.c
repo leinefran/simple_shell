@@ -31,6 +31,7 @@ int few(pid_t c_pid, char **arr, int line_counter)
 		if (WIFEXITED(status))
 		{
 			const int ex_status = WEXITSTATUS(status);
+
 			return (ex_status);
 		}
 	}
@@ -66,7 +67,7 @@ int path(char **arr, int line_counter)
 			error(arr[0], line_counter, 1);
 			free(path_copy);
 		}
-		return(ex_status);
+		return (ex_status);
 	}
 	else
 	{
