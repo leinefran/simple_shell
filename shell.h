@@ -26,7 +26,7 @@ typedef struct environ_list
 
 void sighand(int signum);
 extern char **environ;
-int print_env(void);
+void print_env(void);
 void error(char *str, int line_counter, int flag);
 int _strlen(char *s);
 void rev_string(char *s);
