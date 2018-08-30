@@ -49,10 +49,10 @@ int _strlen(char *s)
  */
 int str_comp(char **arr, int size)
 {
-	char *ex = "exit", *env = "env", *ptr = arr[0];
-	char *dot = ".";
+	char *command[4] = {"exit", "env", ".", NULL};
+	char *ptr = arr[0];
 
-	int i = 0;
+	int i = 0, j = 0, flag = 0;
 
 	if (size != 1)
 		return (-1);
@@ -60,19 +60,19 @@ int str_comp(char **arr, int size)
 	if (!ptr)
 		return (1);
 
-	while (ex[i] == ptr[i] || env[i] == ptr[i] || dot[i] == ptr[i])
+	while (command[i] != NULL)
 	{
-		if (ex[i] == '\0' && ptr[i] == '\0')
-			return (0);
-		else if (env[i] == '\0' && ptr[i] == '\0')
+		j = 0;
+		while (command[i][j] == ptr[j])
 		{
-			print_env();
-			return (1);
+			if (command[i][j] == '\0' || ptr[j] == '\0')
+				break;
+			j++;
 		}
-		else if (dot[i] == '\0' && ptr[i] == '\0')
-			return (2);
-
+		if (command[i][j] == ptr[j])
+			return(flag);
 		i++;
+		flag++;
 	}
 
 	return (-1);

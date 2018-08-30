@@ -78,6 +78,7 @@ int main(void)
 			}
 			else if (result == 1)
 			{
+				print_env();
 				free(arr);
 				free(buff);
 				continue;
