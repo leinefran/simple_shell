@@ -4,9 +4,11 @@
 
 Shell - A simple shell
 
+![shell header](https://github.com/Mikaelia/simple_shell/blob/master/header_img.png)
+
 ## Description
 
-This project recreates a simple command line shell that executes commands read from the standard input or from a file. 
+This project recreates a simple command line shell that executes commands read from the standard input or from a file. It has been tested on Ubuntu 14.05.5 LTS.
 
 * Can execute any commands from the environment path.
 * Works on interactive and non-interactive mode.
@@ -62,6 +64,31 @@ vagrant@simple_shell$
 
 ```
 
+### How to Use
+Clone repo
+```
+git clone https://github.com/leinefran/simple_shell.git
+```
+Change directory to simple_shell
+```
+cd simple_shell/
+```
+Compile all the `.c` files in /simple_shell
+```
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+```
+
+### Project Requirements:
+* Allowed editors: `vi`, `vim`, `emacs`
+* All your files will be compiled on Ubuntu 14.04 LTS
+* Your C programs and functions will be compiled with `gcc 4.8.4` using the flags `-Wall -Werror -Wextra` and `-pedantic`
+* All your files should end with a new line
+* A `README.md` file, at the root of the folder of the project is mandatory
+* Your code should use the `Betty` style. It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
+* No more than 5 functions per file
+* All your header files should be include guarded
+* Use system calls only when you need to (why?)
+
 ### List of allowed functions and system calls
 * access (man 2 access)
 * chdir (man 2 chdir)
@@ -116,8 +143,9 @@ $ gcc -Wall -Werror -Wextra -pedantic *.c
 
 ### Authors
 
-[Francesca Cantor](https://github.com/fcantor)
+[Francesca Cantor](https://github.com/fcantor) || [Twitter](https://twitter.com/servomecatnism) || [email](francesca.cantor@holbertonschool.com)
 
-[Leine Valente](https://github.com/leinefran)
 
-[Nicole Swanson](https://github.com/thenicopixie)
+[Leine Valente](https://github.com/leinefran) || [Twitter](https://twitter.com/leinefran) || [email](leine.valente@holbertonschool.com)
+
+[Nicole Swanson](https://github.com/thenicopixie) || [Twitter](https://twitter.com/Nicolette_Swan) || [email](nicole.swanson@holbertonschool.com)
